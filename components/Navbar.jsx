@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import SignOut from "./SignOut";
 export default function Navbar() {
   return (
     <nav>
@@ -20,6 +21,9 @@ export default function Navbar() {
         <ul className="flex gap-4 text-[#9C9C9C]">
           <li>About</li>
           <li>Contact Us</li>
+          <li>
+            <SignOut></SignOut>
+          </li>
         </ul>
       </div>
     </nav>
