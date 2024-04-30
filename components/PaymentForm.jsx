@@ -1,13 +1,17 @@
+"use client";
+import { addGoingEvent } from "@/app/actions";
+import useAuth from "@/app/hooks/useAuth";
 import React from "react";
 
-export default function PaymentForm() {
+export default function PaymentForm({ eventId }) {
+  const { auth } = useAuth();
   return (
     <main>
       <section className="container">
         <div className="bg-[#242526] p-6 rounded-lg max-w-xl mx-auto my-12">
           <h2 className="font-bold text-xl mb-8">Payment Details</h2>
 
-          <form>
+          <form action={() => addGoingEvent(eventId, auth)}>
             <div className="my-4 space-y-2">
               <label for="name" className="block">
                 Name

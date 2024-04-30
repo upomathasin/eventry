@@ -1,4 +1,5 @@
 import React from "react";
+import ActionButtons from "../ActionButtons";
 
 export default function HeroSection({ event }) {
   return (
@@ -23,8 +24,11 @@ export default function HeroSection({ event }) {
         </div>
 
         <div className="w-full flex gap-4 mt-4 flex-1 ">
-          <button className="w-full">Interested</button>
-          <button className="w-full">Going</button>
+          <ActionButtons
+            eventId={event._id}
+            interested_ids={event.interested_ids}
+            formDetails={true}
+          ></ActionButtons>
         </div>
       </div>
     </div>

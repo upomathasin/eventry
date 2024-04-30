@@ -11,6 +11,7 @@ export default function SignOut() {
     setAuth(null);
     router.push("/login");
   };
+
   return (
     <div>
       {auth ? (

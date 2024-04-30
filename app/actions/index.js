@@ -1,6 +1,14 @@
 "use server";
 
-import { createUser, findUserByCredentials } from "@/db/query";
+import {
+  createUser,
+  findUserByCredentials,
+  updateGoing,
+  updateUserInterest,
+} from "@/db/query";
+import { eventModel } from "@/models/event-model";
+import mongoose from "mongoose";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export async function registerAction(formData) {
@@ -20,8 +28,26 @@ export async function performLogin(formData) {
   if (found) {
     console.log("Login successful");
     return found;
-    redirect("/");
   } else {
     throw new Error("User not Found !");
+  }
+}
+
+export async function addInterestEvent(eventId, authId) {
+  try {
+    await updateUserInterest(eventId, authId);
+  } catch (e) {
+    throw e;
+  }
+  revalidatePath("/");
+}
+
+export async function addGoingEvent(eventId, user) {
+  try {
+    await updateGoing(eventId, user?._id);
+    revalidatePath("/");
+    redirect("/");
+  } catch (e) {
+    throw e;
   }
 }
