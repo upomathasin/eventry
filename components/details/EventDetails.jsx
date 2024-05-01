@@ -10,7 +10,7 @@ export default function EventDetails({ event }) {
 
           <ul className="">
             {event?.swags?.map((swag) => {
-              return <li>{swag}</li>;
+              return <li key={swag}>{swag}</li>;
             })}
           </ul>
         </div>

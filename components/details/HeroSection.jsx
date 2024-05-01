@@ -1,14 +1,16 @@
 import React from "react";
 import ActionButtons from "../ActionButtons";
-
+import Image from "next/image";
 export default function HeroSection({ event }) {
   return (
     <div>
       {" "}
       <div className="bg-gradient-to-b from-slate-200/20 to-slate-800/30">
-        <img
+        <Image
           src={event.imageUrl}
           alt={event.name}
+          width={450}
+          height={500}
           className="h-[450px] mx-auto"
         />
       </div>
