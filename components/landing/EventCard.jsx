@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ActionButtons from "../ActionButtons";
+import EventSchemaScript from "../meta/EventSchemaScript";
 export default function EventCard({ event }) {
   return (
     <div className="overflow-hidden rounded-md bg-[#242526]">
@@ -12,6 +13,7 @@ export default function EventCard({ event }) {
         width={500}
         height={500}
       />
+      <EventSchemaScript event={event} />
       <div className="p-3">
         <Link
           href={`details/${event._id.toString()}`}
@@ -27,6 +29,7 @@ export default function EventCard({ event }) {
         </div>
         <ActionButtons
           eventId={event._id}
+          going_ids={event.going_ids}
           interested_ids={event.interested_ids}
         ></ActionButtons>
       </div>

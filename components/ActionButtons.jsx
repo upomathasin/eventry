@@ -14,8 +14,10 @@ export default function ActionButtons({
   const isInterested = interested_ids?.find(
     (id) => id.toString() === auth?._id
   );
+  const isGoing = going_ids?.find((id) => id.toString() === auth?._id);
   const router = useRouter();
   const [interested, setInterested] = useState(isInterested);
+  const [going, setGoing] = useState(isGoing);
   const [isPending, startTranaction] = useTransition();
 
   const toggleInterested = () => {
@@ -43,8 +45,9 @@ export default function ActionButtons({
       </button>
 
       <button
+        disabled={auth && going}
         onClick={markGoing}
-        className=" text-center rounded p-2 w-full bg-green-600 hover:bg-green-700"
+        className=" text-center rounded p-2 w-full "
       >
         Going
       </button>
